@@ -107,6 +107,46 @@ class MainActivity : AppCompatActivity() {
 }
 
   ```
+  
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+
+
+
+    <androidx.camera.view.PreviewView
+        android:layout_width="500dp"
+        android:id="@+id/camera_preview"
+        android:layout_height="500dp">
+    </androidx.camera.view.PreviewView>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/imgBitMap"
+        android:layout_below="@id/camera_preview"
+        >
+    </ImageView>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imgBitMap2"
+        android:layout_toRightOf="@id/imgBitMap"
+        android:layout_below="@id/camera_preview"
+        >
+    </ImageView>
+
+</RelativeLayout>
+
+ ```
 
 
 
