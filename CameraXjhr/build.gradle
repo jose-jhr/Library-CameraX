@@ -61,9 +61,8 @@ afterEvaluate{
             release(MavenPublication) {
                 from components.release
                 groupId = 'com.github.ingenieriajhr'
-                artifactId = 'cameraX JHR'
-                version = '1.0.3'
-
+                artifactId = 'android-camerax'
+                version = '1.0.5'
             }
         }
     }
