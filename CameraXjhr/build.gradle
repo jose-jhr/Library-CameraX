@@ -54,3 +54,17 @@ dependencies {
 // If you want to additionally use the CameraX Extensions library
     implementation "androidx.camera:camera-extensions:1.0.0-alpha21"
 }
+
+afterEvaluate{
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.ingenieriajhr'
+                artifactId = 'cameraX JHR'
+                version = '1.0.3'
+
+            }
+        }
+    }
+}
