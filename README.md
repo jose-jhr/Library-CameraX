@@ -1,6 +1,6 @@
 # Library-CameraX
 
-'''kotlin
+'kotlin
 allprojects {
 		repositories {
 			...
@@ -8,4 +8,4 @@ allprojects {
 		}
 	}
 
-'''
+'
