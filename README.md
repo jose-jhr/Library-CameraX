@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
 
 
 preview camera X
-![image](https://user-images.githubusercontent.com/66834393/234764014-91ab7f3f-7b25-4d31-a48f-997c92107a2d.png)
+![image](https://user-images.githubusercontent.com/66834393/234764942-15df1800-58e4-46bf-8282-50bf637905c1.png)
 
 
 
