@@ -15,19 +15,20 @@ allprojects {
  
 dependencies {
 	        implementation 'com.github.jose-jhr:Library-CameraX:1.0.5'
+		
+		
+		 
+    // CameraX core library using the camera2 implementation
+    def camerax_version = "1.0.0-rc02"
+    // If you want to additionally use the CameraX View class
+    implementation "androidx.camera:camera-view:1.0.0-alpha21"
+		
+		
 	}
 	
  ```
 
 
- ```kotlin
-  
-    // CameraX core library using the camera2 implementation
-    def camerax_version = "1.0.0-rc02"
-    // If you want to additionally use the CameraX View class
-    implementation "androidx.camera:camera-view:1.0.0-alpha21"
-    
-  ```
 
 
 
