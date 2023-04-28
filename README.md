@@ -14,13 +14,18 @@ allprojects {
  ```kotlin
  
 dependencies {
-	        implementation 'com.github.jose-jhr:Library-CameraX:1.0.5'
+	        
 		
-			// CameraX core library using the camera2 implementation
-			def camerax_version = "1.0.0-rc02"
-			// If you want to additionally use the CameraX View class
-			implementation "androidx.camera:camera-view:1.0.0-alpha21"
+		//seleccionar la 1) o la 2) solo una.
 		
+		//1) If you want to additionally use the CameraX View class
+		implementation "androidx.camera:camera-view:1.0.0-alpha21"
+		
+		//2)
+		// If you want to additionally use the CameraX View class
+		implementation "androidx.camera:camera-view:1.3.0-alpha06"
+		
+		implementation 'com.github.jose-jhr:Library-CameraX:1.0.5'
 		
 	}
 	
@@ -52,7 +57,6 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding :ActivityMainBinding
     lateinit var cameraJhr: CameraJhr
-    val analyzer = LuminosityAnalyzer()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
