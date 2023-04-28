@@ -22,8 +22,8 @@ dependencies {
 		implementation "androidx.camera:camera-view:1.0.0-alpha21"
 		
 		//2) 
-		// If you want to additionally use the CameraX View class
-    		implementation "androidx.camera:camera-view:1.3.0-alpha06"
+                // If you want to additionally use the CameraX View class
+		implementation "androidx.camera:camera-view:1.3.0-alpha06"
 		
 	}
 	
