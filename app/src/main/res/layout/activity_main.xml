@@ -8,8 +8,6 @@
 
 
 
-
-
     <androidx.camera.view.PreviewView
         android:layout_width="500dp"
         android:id="@+id/camera_preview"
