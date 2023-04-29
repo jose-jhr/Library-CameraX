@@ -90,7 +90,7 @@ dependencies {
         cameraJhr.initBitmap()
         cameraJhr.initImageProxy()
         //selector camera LENS_FACING_FRONT = 0;    LENS_FACING_BACK = 1;
-        //aspect Ratio  RATIO_4_3 = 0; RATIO_16_9 = 1;
+        //aspect Ratio  RATIO_4_3 = 0; RATIO_16_9 = 1;  false returImageProxy, true return bitmap
         cameraJhr.start(0,0,binding.cameraPreview,false,false,true)
     }
 
