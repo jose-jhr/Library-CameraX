@@ -1,22 +1,21 @@
 package com.ingenieriiajhr.jhrCameraX
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Build
 import android.widget.Toast
-import androidx.camera.core.AspectRatio
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
-import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 
 class CameraJhr(val context: Context) {
 
@@ -41,9 +40,16 @@ class CameraJhr(val context: Context) {
     //bitmap response two
     lateinit var responseBitmap:BitmapResponse
 
+    //imageproxy response two
+    lateinit var responseImageProxy: ImageProxyResponse
 
-    fun addlistenerResponse(response: BitmapResponse){
+
+    fun addlistenerBitmap(response: BitmapResponse){
         this.responseBitmap = response
+    }
+
+    fun addlistenerImageProxy(response: ImageProxyResponse){
+        this.responseImageProxy = response
     }
 
 
@@ -57,7 +63,8 @@ class CameraJhr(val context: Context) {
      *
      * cameraPreview true or false
      */
-    fun start(selectorCamera: Int,aspectRatio: Int,view: PreviewView,cameraPreview:Boolean){
+    @SuppressLint("WrongConstant")
+    fun start(selectorCamera: Int, aspectRatio: Int, view: PreviewView, cameraPreview:Boolean,returImageProxy: Boolean,returBitmap: Boolean){
         //get intance provider camera
         val cameraProviderFuture =ProcessCameraProvider.getInstance(context)
 
@@ -65,12 +72,19 @@ class CameraJhr(val context: Context) {
         //select camera
         val cameraSelector = CameraSelector.Builder().requireLensFacing(selectorCamera).build()
 
+        luminosityAnalyzer.returnBitmap = returBitmap
+        luminosityAnalyzer.returnImageProxy = returImageProxy
+
+
+        //camera is frontal?
+        luminosityAnalyzer.isFrontCamera = selectorCamera ==0
+
         //properties analysis image
         imageAnalysis = ImageAnalysis.Builder().apply {
             //Delete the next image while analyzing the actual image, keep(mantener) last
             setImageQueueDepth(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+            setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
         }.build()
-
 
         imageAnalysis?.setAnalyzer(cameraExecutor,luminosityAnalyzer)
 
@@ -78,6 +92,7 @@ class CameraJhr(val context: Context) {
             imagePreview = Preview.Builder().apply {
                 setTargetAspectRatio(aspectRatio)
                 setTargetRotation(view.display.rotation)
+
             }.build()
 
             val cameraProvider = cameraProviderFuture.get()
@@ -123,6 +138,15 @@ class CameraJhr(val context: Context) {
             override fun bitmapReturn(bitmap: Bitmap?) {
                 responseBitmap.bitmapReturn(bitmap)
             }
+        })
+    }
+
+    fun initImageProxy(){
+        luminosityAnalyzer.addListenerImageProxy(object :ImageProxyResponse{
+            override fun imageProxyReturn(imageProxy: ImageProxy) {
+                responseImageProxy.imageProxyReturn(imageProxy)
+            }
+
         })
     }
 
