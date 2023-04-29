@@ -16,16 +16,10 @@ allprojects {
 dependencies {
 	        
 		
-		//seleccionar la 1) o la 2) solo una.
-		
-		//1) If you want to additionally use the CameraX View class
-		implementation "androidx.camera:camera-view:1.0.0-alpha21"
-		
-		//2)
 		// If you want to additionally use the CameraX View class
 		implementation "androidx.camera:camera-view:1.3.0-alpha06"
 		
-		implementation 'com.github.jose-jhr:Library-CameraX:1.0.5'
+		implementation 'com.github.jose-jhr:Library-CameraX:1.0.7'
 		
 	}
 	
