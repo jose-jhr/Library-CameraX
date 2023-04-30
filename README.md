@@ -184,6 +184,9 @@ preview camera X
 end Upload library
 
 
+in buldgradle from library
+id 'maven-publish'
+
 build.gradle from library below dependencies {}
  ```kotlin
  
