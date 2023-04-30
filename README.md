@@ -185,8 +185,13 @@ end Upload library
 
 
 in buldgradle from library
+ ```kotlin
+
 id 'maven-publish'
 
+```
+ 
+ 
 build.gradle from library below dependencies {}
  ```kotlin
  
